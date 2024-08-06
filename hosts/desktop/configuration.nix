@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ../../common.nix
     ];
   
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -30,44 +31,14 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Select internationalisation properties.
-  # i18n.defaultLocale = "en_US.UTF-8";
+  i18n.defaultLocale = "en_US.UTF-8";
   # console = {
   #   font = "Lat2-Terminus16";
   #   keyMap = "us";
   #   useXkbConfig = true; # use xkb.options in tty.
   # };
 
-  # Enable the X11 windowing system.
-  # services.xserver.enable = true;
-
-
-  # Enable the GNOME Desktop Environment.
-  # services.xserver.displayManager.gdm.enable = true;
-  # services.xserver.desktopManager.gnome.enable = true;
-  # services.xserver.videoDrivers = [ "nvidia" ];
-
-  programs.hyprland = {
-    enable = true;
-    #nvidiaPatches = true;
-    xwayland.enable = true;
-    package = inputs.hyprland.packages."${pkgs.system}".hyprland;
-  };
-
   security.polkit.enable = true;
-
-  xdg.portal = {
-    enable = true;
-    # extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-hyprland ];
-  };
-
-  environment.sessionVariables = {
-    WLR_NO_HARDWARE_CURSORS = "1";
-    NIXOS_OZONE_WL = "1";
-  };
-
-  # hardware.opengl = {
-  #   enable = true;
-  # };
 
   hardware.graphics.enable = true;
 
@@ -84,23 +55,15 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
-  # Configure keymap in X11
-  # services.xserver.xkb.layout = "us";
-  # services.xserver.xkb.options = "eurosign:e,caps:escape";
+  # Custom Modules
+
+  myHello.enable = true;
+  envGnome.enable = false;
+  envHyprland.enable = true;
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
-  # Enable sound.
-  # hardware.pulseaudio.enable = true;
-  # OR
-  # services.pipewire = {
-  #   enable = true;
-  #   pulse.enable = true;
-  # };
-  
-  # hardware.pulseaudio.enable = false;
-  # sound.enable = true;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -108,60 +71,6 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     jack.enable = true;
-  };
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.libinput.enable = true;
-  
-  nixpkgs.config.allowUnfree = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  # users.users.alice = {
-  #   isNormalUser = true;
-  #   extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-  #   packages = with pkgs; [
-  #     firefox
-  #     tree
-  #   ];
-  # };
-
-  users.users.zach = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ];
-    useDefaultShell = true;
-    initialPassword = "12345";
-    packages = with pkgs; [
-      discord spotify
-    ];
-  };
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  # environment.systemPackages = with pkgs; [ vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #   wget
-  # ];
-
-  environment.systemPackages = with pkgs; [
-    git
-    firefox
-    curl
-    wget
-    tree
-    kitty
-    libnotify
-    waybar
-    dunst #mako
-    swww
-    rofi-wayland
-    networkmanagerapplet
-  ];
-
-  programs.neovim = {
-    enable = true;
-  };
-
-  programs._1password-gui = {
-    enable = true;
   };
 
   # Some programs need SUID wrappers, can be configured further or are
