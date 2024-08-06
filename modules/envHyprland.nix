@@ -19,6 +19,7 @@ in {
 
 		environment.systemPackages = with pkgs; [
 			libnotify waybar dunst swww rofi-wayland networkmanagerapplet
+			grim slurp wl-clipboard nwg-look
 		];
 
 		xdg.portal.enable = true;
