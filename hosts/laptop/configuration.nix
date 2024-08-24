@@ -57,29 +57,6 @@
   envHyprland.enable = false;
   envGnome.enable = true;
 
-  # Install firefox.
-  programs.firefox.enable = true;
-
-  # Neovim
-  programs.neovim.enable = true;
-
-  # Git
-  programs.git.enable = true;
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
-  # 1Password
-  # programs._1password-gui.enable = true;
-
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    curl wget tree kitty libnotify waybar dunst swww rofi-wayland networkmanagerapplet
-
-  ];
-
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
