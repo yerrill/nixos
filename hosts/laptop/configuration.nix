@@ -8,7 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ../../users.nix
+      ../../common.nix
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -29,9 +29,6 @@
 
   # Set your time zone.
   time.timeZone = "America/Toronto";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_CA.UTF-8";
 
   # Enable CUPS to print documents.
   services.printing.enable = true;

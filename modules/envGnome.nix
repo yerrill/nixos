@@ -15,9 +15,9 @@ in {
 		services.xserver.displayManager.gdm.enable = true;
 		services.xserver.desktopManager.gnome.enable = true;
 
-		services.xserver = {
+		services.xserver.xkb = {
 			layout = "us";
-			xkbVariant = "";
+			variant = "";
 		};
 	};
 }
