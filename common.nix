@@ -20,8 +20,8 @@
 		wayland.windowManager.hyprland.enable = true;
 		wayland.windowManager.hyprland.settings = {
 			monitor = [
-				"monitor=HDMI-A-1,1920x1080@144,0x0,1"
-				"monitor=DP-1,3840x2160@60,1920x0,2"
+				"HDMI-A-1,1920x1080@144,0x0,1"
+				"DP-1,3840x2160@60,1920x0,2"
 			];
 
 			"$terminal" = "kitty";
@@ -31,6 +31,10 @@
 			env = [
 				"XCURSOR_SIZE,24"
 				"HYPRCURSOR_SIZE,24"
+				# "LIBVA_DRIVER_NAME,nvidia"
+				# "XDG_SESSION_TYPE,wayland"
+				# "GBM_BACKEND,nvidia-drm"
+				# "__GLX_VENDOR_LIBRARY_NAME,nvidia"
 			];
 
 			exec-once = [

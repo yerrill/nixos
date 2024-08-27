@@ -42,6 +42,8 @@
 
   hardware.graphics.enable = true;
 
+  # services.xserver.videoDrivers = [ "nvidia" ];
+
   hardware.nvidia = {
     modesetting.enable = true;
 
@@ -60,6 +62,10 @@
   myHello.enable = true;
   envGnome.enable = false;
   envHyprland.enable = true;
+
+  environment.systemPackages = with pkgs; [
+
+  ];
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
