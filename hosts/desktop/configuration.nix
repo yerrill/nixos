@@ -6,10 +6,10 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ../../common.nix
-    ];
+	[ # Include the results of the hardware scan.
+	  ./hardware-configuration.nix
+	  ../../common.nix
+	];
   
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -45,16 +45,16 @@
   # services.xserver.videoDrivers = [ "nvidia" ];
 
   hardware.nvidia = {
-    modesetting.enable = true;
+	modesetting.enable = true;
 
-    powerManagement.enable = false;
-    powerManagement.finegrained = false;
+	powerManagement.enable = false;
+	powerManagement.finegrained = false;
 
-    open = false;
+	open = false;
 
-    nvidiaSettings = true;
+	nvidiaSettings = true;
 
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+	package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
   # Custom Modules
@@ -72,11 +72,11 @@
 
   security.rtkit.enable = true;
   services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    jack.enable = true;
+	enable = true;
+	alsa.enable = true;
+	alsa.support32Bit = true;
+	pulse.enable = true;
+	jack.enable = true;
   };
 
   # Some programs need SUID wrappers, can be configured further or are

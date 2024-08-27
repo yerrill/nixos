@@ -29,6 +29,32 @@
 					./hosts/desktop/configuration.nix
 					./modules
 					home-manager.nixosModules.home-manager
+					{
+						home-manager.useGlobalPkgs = true;
+						home-manager.useUserPackages = true;
+						home-manager.backupFileExtension = "hmmoved";
+
+						home-manager.users.zach = { pkgs, inputs, ... }: {
+							imports = [
+								./home-manager
+							];
+
+							home.username = "zach";
+							home.homeDirectory = "/home/theNameOfTheUser";
+							home-manager.backupFileExtension = "hmmoved";
+							programs.home-manager.enable = true;
+
+							hmhyprland.enable = true;
+
+							home.packages = with pkgs; [
+								thunderbird
+								discord
+								spotify
+							];
+
+							home.stateVersion = "24.05";
+						};
+					}
 				];
 			};
 
