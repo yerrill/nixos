@@ -23,6 +23,7 @@
 	programs.neovim.enable = true;
 
 	fonts.packages = with pkgs; [
+		nerdfonts
 		noto-fonts
 		noto-fonts-cjk
 		noto-fonts-emoji
