@@ -40,8 +40,7 @@
 							];
 
 							home.username = "zach";
-							home.homeDirectory = "/home/theNameOfTheUser";
-							home-manager.backupFileExtension = "hmmoved";
+							home.homeDirectory = "/home/zach";
 							programs.home-manager.enable = true;
 
 							hmhyprland.enable = true;

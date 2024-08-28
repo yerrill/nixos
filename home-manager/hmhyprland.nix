@@ -7,13 +7,10 @@ in {
 	];
 
 	options = {
-		myHello.enable = lib.mkEnableOption "Enable home-manager hyprland config";	
+		hmhyprland.enable = lib.mkEnableOption "Enable home-manager hyprland config";	
 	};
 
 	config = lib.mkIf cfg.enable {
-		environment.systemPackages = [
-			pkgs.hello
-		];
 
 		wayland.windowManager.hyprland.enable = true;
 		wayland.windowManager.hyprland.settings = {
