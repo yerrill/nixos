@@ -43,6 +43,7 @@
 				];
 
 				programs.git = {
+					enable = true;
 					userName = "Zach Yerrill";
 					userEmail = "26354308+yerrill@users.noreply.github.com";
 				};
