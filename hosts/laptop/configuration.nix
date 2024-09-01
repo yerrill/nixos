@@ -54,8 +54,8 @@
 
   # Custom Modules
   myHello.enable = true;
-  envHyprland.enable = false;
-  envGnome.enable = true;
+  envHyprland.enable = true;
+  envGnome.enable = false;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

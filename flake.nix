@@ -20,6 +20,37 @@
 		inherit (self) outputs;
 		system = "x86_64-linux";
 		pkgs = nixpkgs.legacyPackages.${system};
+		hm = {
+			home-manager.useGlobalPkgs = true;
+			home-manager.useUserPackages = true;
+			home-manager.backupFileExtension = "hmmoved";
+
+			home-manager.users.zach = { pkgs, inputs, ... }: {
+				imports = [
+					./home-manager
+				];
+
+				home.username = "zach";
+				home.homeDirectory = "/home/zach";
+				programs.home-manager.enable = true;
+
+				hmhyprland.enable = true;
+
+				home.packages = with pkgs; [
+					thunderbird
+					discord
+					spotify
+				];
+
+				programs.git = {
+					userName = "Zach Yerrill";
+					userEmail = "26354308+yerrill@users.noreply.github.com";
+				};
+				
+				home.stateVersion = "24.05";
+			};
+			
+		};
 	in {
 		nixosConfigurations = {
 			desktop = nixpkgs.lib.nixosSystem {
@@ -29,31 +60,7 @@
 					./hosts/desktop/configuration.nix
 					./modules
 					home-manager.nixosModules.home-manager
-					{
-						home-manager.useGlobalPkgs = true;
-						home-manager.useUserPackages = true;
-						home-manager.backupFileExtension = "hmmoved";
-
-						home-manager.users.zach = { pkgs, inputs, ... }: {
-							imports = [
-								./home-manager
-							];
-
-							home.username = "zach";
-							home.homeDirectory = "/home/zach";
-							programs.home-manager.enable = true;
-
-							hmhyprland.enable = true;
-
-							home.packages = with pkgs; [
-								thunderbird
-								discord
-								spotify
-							];
-
-							home.stateVersion = "24.05";
-						};
-					}
+					hm
 				];
 			};
 
@@ -63,7 +70,8 @@
 				modules = [
 					./hosts/laptop/configuration.nix
 					./modules
-					home-manager.nixosModules.default
+					home-manager.nixosModules.home-manager
+					hm
 				];
 			};
 		};
