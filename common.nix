@@ -14,6 +14,8 @@
 
 	environment.systemPackages = with pkgs; [
 		curl wget tree kitty
+		gcc
+		zig
 	];
 
 	programs.git.enable = true;
