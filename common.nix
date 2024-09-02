@@ -13,7 +13,7 @@
 	nixpkgs.config.allowUnfree = true;
 
 	environment.systemPackages = with pkgs; [
-		curl wget tree kitty
+		curl wget tree kitty unzip
 		gcc
 		zig
 	];
